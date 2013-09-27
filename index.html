@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='ut8'>
+  <title>type-check - JavaScript type checking at runtime library with Haskell like type syntax</title>
+  <meta name='description' content="type-check is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code.">
+  <link href="normalize.css" rel="stylesheet">
+  <style>
+    body {
+      color: #556270;
+      font-weight: normal;
+      font-family: sans-serif;
+    }
+    #site {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+
+    }
+    h1, h2, h3 {
+      color: #C44D58;
+      font-weight: normal;
+    }
+    p {
+    }
+    pre {
+      font-size: smaller;
+    }
+    a {
+      color: #4ECDC4;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    form {
+      padding: 20px;
+    }
+    label, textarea, #bottom {
+      display: block;
+      margin: auto;
+      width: 99%;
+    }
+    label {
+      text-align: left;
+    }
+    textarea {
+      border-color: #556270;
+      border-width: 1px;
+      border-style: solid;
+      margin-bottom: 10px;
+      font-family: monospace;
+      white-space: pre;
+      font-size: larger;
+    }
+    button {
+    }
+    #input {
+      height: 150px;
+    }
+    #state {
+      float: right;
+      margin-top: 5px;
+    }
+    .passed {
+      background-color: #C7F464;
+    }
+    .failed {
+      background-color: #C44D58;
+    }
+    .failed label, .failed #state {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="site">
+    <div id="info">
+      <h1>type-check demo</h1>
+
+      <p><a href="https://github.com/gkz/type-check">type-check</a> is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code.
+
+      <p>For more information, including documentation and more examples, please check out the <a href="https://github.com/gkz/type-check#type-check">README on GitHub</a>. MIT License.
+
+      <p>For updates on type-check, <a href="https://twitter.com/gkzahariev">follow me on twitter</a>.
+
+      <p><code>npm install type-check</code>
+
+      <p><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a> <iframe src="http://ghbtns.com/github-btn.html?user=gkz&repo=type-check&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe> <a href="https://twitter.com/gkzahariev" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @gkzahariev</a>
+
+      <h3>quick examples</h3>
+
+      <p>Types on the left for values on the right. For more examples check out the <a href="https://github.com/gkz/type-check#type-check">readme</a>.
+
+<pre>
+Number                        1
+Maybe String                  'str'
+Maybe String                  null
+Number | String               2
+Number | String               'str'
+[Number]                      [1, 2, 3]
+(String, Number)              ['str', 2]
+{x: Number, y: Boolean}       {x: 2, y: false}
+{x: Number, y: Maybe Boolean} {x: 2}
+{x: Number, y: Boolean, ...}  {x: 2, y: false, z: 'str'}
+</pre>
+    </div>
+    <div id="demo">
+      <form id="form">
+        <label for="type-input">type</label>
+        <textarea id="type-input"></textarea>
+
+        <label for="input">input</label>
+        <textarea id="input"></textarea>
+
+        <div id="bottom">
+          <button type="submit">Check!</button>
+          <div id="state"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+<script src="type-check.js"></script>
+<script>
+(function() {
+  var lib = require('type-check'),
+      typeCheck = lib.typeCheck,
+      demo = document.getElementById('demo'),
+      typeInput = document.getElementById('type-input'),
+      input = document.getElementById('input'),
+      form = document.getElementById('form'),
+      state = document.getElementById('state');
+  demo.className = 'passed';
+  form.addEventListener('submit', function (e) {
+    var value;
+    e.preventDefault();
+    try {
+      value = eval('(' + input.value + ')');
+    } catch (e) {
+      demo.className = 'failed';
+      state.innerHTML = 'error parsing JavaScript - ' + e.message;
+    }
+    try {
+      state.innerHTML = demo.className = typeCheck(typeInput.value, value) ? 'passed' : 'failed';
+    } catch (e) {
+      demo.className = 'failed';
+      state.innerHTML = 'failed - ' + e.message;
+    }
+    return false;
+  });
+})();
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</body>
+</html>
