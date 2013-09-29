@@ -1,4 +1,4 @@
-# type-check
+# type-check [![Build Status](https://travis-ci.org/gkz/type-check.png?branch=master)](https://travis-ci.org/gkz/type-check)
 
 `type-check` is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code. MIT license. Check out the [demo](http://gkz.github.io/type-check/).
 
