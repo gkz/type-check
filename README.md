@@ -53,6 +53,8 @@ var type = '{a: (String, [Number], {y: Array, ...}), b: Error{message: String, .
 typeCheck(type, {a: ['hi', [1, 2, 3], {y: [1, 'ms']}], b: new Error('oh no')}); // true
 ```
 
+Check out the [type syntax format](#syntax) and [guide](#guide).
+
 ## Usage
 
 `require('type-check');` returns an object that exposes four properties. `VERSION` is the current version of the library as a string. `typeCheck`, `parseType`, and `parsedTypeCheck` are functions.
