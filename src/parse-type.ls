@@ -84,15 +84,15 @@ function consume-types tokens
   types-so-far = {} # for unique check
   if 'Maybe' is peek tokens
     tokens.shift!
-    maybe = true
+    types =
+      * type: 'Undefined'
+      * type: 'Null'
+    types-so-far = {+Undefined, +Null}
   for ever
     {type}:type-obj = consume-type tokens
     types.push type-obj unless types-so-far[type]
     types-so-far[type] = true
     break unless maybe-consume-op tokens, '|'
-  if maybe
-    types.push {type: 'Null'} unless types-so-far.Null
-    types.push {type: 'Undefined'} unless types-so-far.Undefined
   types
 
 # single char ops used : , [ ] ( ) } { | *

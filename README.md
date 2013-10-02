@@ -2,7 +2,7 @@
 
 <a name="type-check" />
 
-`type-check` is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code. MIT license. Check out the [demo](http://gkz.github.io/type-check/).
+`type-check` is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code. MIT license. Version 0.2.0. Check out the [demo](http://gkz.github.io/type-check/).
 
 For updates on `type-check`, [follow me on twitter](https://twitter.com/gkzahariev).
 
@@ -150,7 +150,7 @@ A basic type, eg. `Number`, uses this check. This is much more versatile than us
 
 You may check for multiple types by separating types with a `|`. The checker proceeds from left to right, and passes if the value is any of the types - eg. `String | Boolean` first checks if the value is a string, and then if it is a boolean. If it is none of those, then it returns false.
 
-Adding a `Maybe` in front of a list of multiple types is the same as also checking for `Null` and `Undefined` - eg. `Maybe String` is equivalent to `String | Null | Undefined`.
+Adding a `Maybe` in front of a list of multiple types is the same as also checking for `Null` and `Undefined` - eg. `Maybe String` is equivalent to `Undefined | Null | String`.
 
 The wildcard `*` matches all types.
 

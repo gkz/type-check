@@ -10,19 +10,19 @@ suite 'parse type' ->
 
   test 'Maybe' ->
     deep-equal (p 'Maybe Number'), [
-      * type: 'Number'
-      * type: 'Null'
       * type: 'Undefined'
+      * type: 'Null'
+      * type: 'Number'
     ]
     deep-equal (p 'Maybe Null | Number'), [
+      * type: 'Undefined'
       * type: 'Null'
       * type: 'Number'
-      * type: 'Undefined'
     ]
     deep-equal (p 'Maybe Undefined | String'), [
       * type: 'Undefined'
-      * type: 'String'
       * type: 'Null'
+      * type: 'String'
     ]
 
   test 'wildcard' ->
