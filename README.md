@@ -2,7 +2,7 @@
 
 <a name="type-check" />
 
-`type-check` is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code. MIT license. Version 0.2.0. Check out the [demo](http://gkz.github.io/type-check/).
+`type-check` is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code. It is a major component of [levn](https://github.com/gkz/levn). MIT license. Version 0.2.0. Check out the [demo](http://gkz.github.io/type-check/).
 
 For updates on `type-check`, [follow me on twitter](https://twitter.com/gkzahariev).
 
@@ -164,9 +164,9 @@ If you want to make a field optional, you can simply use `Maybe` - eg. `{x: Bool
 
 If you don't care if the value has properties beyond what you have specified, you can use the 'etc' operator `...` - eg. `{x: Boolean, ...}` will match an object with an `x` property that is a boolean, and with zero or more other properties.
 
-For an array, you must specify one or more types (seperated by `|`) - it will pass for something of any length as long as each element passes the types provided - eg. `[Number]`, `[Number | String]`.
+For an array, you must specify one or more types (separated by `|`) - it will pass for something of any length as long as each element passes the types provided - eg. `[Number]`, `[Number | String]`.
 
-A tuple checks for a fixed number of elements, each of a potentially different type. Each element is seperated by a comma - eg. `(String, Number)`.
+A tuple checks for a fixed number of elements, each of a potentially different type. Each element is separated by a comma - eg. `(String, Number)`.
 
 An array and tuple structure check that the value is of type `Array` by default, but if another type is specified, they will check for that instead - eg. `Int32Array[Number]`. You can use the wildcard `*` to search for any type at all.
 
@@ -198,6 +198,6 @@ typeCheck('Even', 3, options); // false
 
 The `typeOf` property is the type the value should be, and `validate` is a function which should return true if the value is of that type. `validate` receives one parameter, which is the value that we are checking.
 
-## About
+## Technical About
 
-`type-check` is written in [LiveScript](http://livescript.net/) - a langauge that compiles to JavaScript. It also uses the [prelude.ls](http://preludels.com/) library.
+`type-check` is written in [LiveScript](http://livescript.net/) - a language that compiles to JavaScript. It also uses the [prelude.ls](http://preludels.com/) library.
