@@ -67,6 +67,30 @@ suite 'parse type' ->
         * type: 'Number'
       ]
 
+  suite 'optional comment' ->
+    test 'basic' ->
+      deep-equal (p 'x :: Number'), [
+        * type: 'Number'
+      ]
+
+    test 'multiple' ->
+      deep-equal (p 'x :: Number | String'), [
+        * type: 'Number'
+        * type: 'String'
+      ]
+
+    test 'structures' ->
+      deep-equal (p 'list :: [Number]'), [
+        structure: 'array'
+        of: [type: 'Number']
+      ]
+      deep-equal (p '[element :: Number]'), [
+        structure: 'array'
+        of: [type: 'Number']
+      ]
+
+    test 'no comment specified' ->
+      throws (-> p ':: Number'), /No comment before comment separator '::' found/
 
   suite 'array structure' ->
     test 'simple' ->

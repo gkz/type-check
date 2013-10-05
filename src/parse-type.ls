@@ -80,6 +80,12 @@ function consume-type tokens
     structure
 
 function consume-types tokens
+  if '::' is peek tokens
+    throw new Error "No comment before comment separator '::' found."
+  lookahead = tokens.1
+  if lookahead? and lookahead is '::'
+    tokens.shift! # remove comment
+    tokens.shift! # remove ::
   types = []
   types-so-far = {} # for unique check
   if 'Maybe' is peek tokens
@@ -98,6 +104,7 @@ function consume-types tokens
 # single char ops used : , [ ] ( ) } { | *
 token-regex = //
     \.\.\.                       # etc op
+  | ::                           # comment separator
   | ->                           # arrow (for error generation purposes)
   | #{ identifier-regex.source } # identifier
   | \S                           # all single char ops - valid, and non-valid (for error purposes)
