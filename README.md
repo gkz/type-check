@@ -175,6 +175,8 @@ A tuple checks for a fixed number of elements, each of a potentially different t
 
 An array and tuple structure check that the value is of type `Array` by default, but if another type is specified, they will check for that instead - eg. `Int32Array[Number]`. You can use the wildcard `*` to search for any type at all.
 
+Check out the [type precedence](https://github.com/zaboco/type-precedence) library for type-check.
+
 ## Options
 
 Options is an object. It is an optional parameter to the `typeCheck` and `parsedTypeCheck` functions. The only current option is `customTypes`.
