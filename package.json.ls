@@ -1,5 +1,5 @@
 name: 'type-check'
-version: '0.2.0'
+version: '0.3.0'
 
 author: 'George Zahariev <z@georgezahariev.com>'
 description: 'type-check allows you to check the types of JavaScript values at runtime with a Haskell like type syntax.'
