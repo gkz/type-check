@@ -29,7 +29,7 @@ scripts:
   test: "make test"
 
 dependencies:
-  'prelude-ls': '~1.0.3'
+  'prelude-ls': '~1.1.0'
 
 dev-dependencies:
   LiveScript: '~1.2.0'
