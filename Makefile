@@ -14,16 +14,16 @@ package.json: package.json.ls
 	$(LSC) --compile package.json.ls
 
 lib:
-	mkdir lib/
+	mkdir -p lib/
 
 lib/%.js: src/%.ls lib
 	$(LSC) --compile --output lib "$<"
 
 browser:
-	mkdir browser/
+	mkdir -p browser/
 
 browser/type-check.js: $(LIB) browser
-	$(BROWSERIFY) -r ./lib/index.js:type-check > browser/type-check.js
+	{ ./preroll ; $(BROWSERIFY) -r ./lib/index.js:type-check ; } > browser/type-check.js
 
 .PHONY: build build-browser test coverage dev-install loc clean
 
