@@ -39,7 +39,7 @@ test: build
 coverage: build
 	$(ISTANBUL) cover $(MOCHA2) -- --reporter dot --ui tdd --compilers ls:$(LS)
 
-install: package.json
+dev-install: package.json
 	npm install .
 
 loc:
