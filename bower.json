@@ -1,0 +1,12 @@
+{
+  "name": "type-check",
+  "version": "0.0.2",
+  "main": "browser/type-check.js",
+  "authors": [],
+  "description": "type-check",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [],
+  "dependencies": {},
+  "devDependencies": {}
+}
