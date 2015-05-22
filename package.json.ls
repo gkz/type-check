@@ -16,10 +16,7 @@ files:
 main: './lib/'
 
 bugs: 'https://github.com/gkz/type-check/issues'
-licenses:
-  * type: 'MIT'
-    url: 'https://raw.github.com/gkz/type-check/master/LICENSE'
-  ...
+license: 'MIT'
 engines:
   node: '>= 0.8.0'
 repository:
