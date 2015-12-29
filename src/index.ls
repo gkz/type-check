@@ -1,4 +1,4 @@
-VERSION = '0.3.1'
+VERSION = '0.3.2'
 parse-type = require './parse-type'
 parsed-type-check = require './check'
 
