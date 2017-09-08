@@ -134,7 +134,7 @@ White space is ignored. The root node is a __Types__.
 
 * __Identifier__ = `[\$\w]+` - a group of any lower or upper case letters, numbers, underscores, or dollar signs - eg. `String`
 * __Type__ = an `Identifier`, an `Identifier` followed by a `Structure`, just a `Structure`, or a wildcard `*` - eg. `String`, `Object{x: Number}`, `{x: Number}`, `Array{0: String, 1: Boolean, length: Number}`, `*`
-* __Types__ = optionally a comment (an `Indentifier` followed by a `::`), optionally the identifier `Maybe`, one or more `Type`, separated by `|` - eg. `Number`, `String | Date`, `Maybe Number`, `Maybe Boolean | String`
+* __Types__ = optionally a comment (an `Identifier` followed by a `::`), optionally the identifier `Maybe`, one or more `Type`, separated by `|` - eg. `Number`, `String | Date`, `Maybe Number`, `Maybe Boolean | String`
 * __Structure__ = `Fields`, or a `Tuple`, or an `Array` - eg. `{x: Number}`, `(String, Number)`, `[Date]`
 * __Fields__ = a `{`, followed one or more `Field` separated by a comma `,` (trailing comma `,` is permitted), optionally an `...` (always preceded by a comma `,`), followed by a `}` - eg. `{x: Number, y: String}`, `{k: Function, ...}`
 * __Field__ = an `Identifier`, followed by a colon `:`, followed by `Types` - eg. `x: Date | String`, `y: Boolean`
