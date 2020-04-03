@@ -197,6 +197,7 @@ suite 'check' ->
             type-of: 'Number'
             validate: -> it % 2 is 0
       assert c 'Even', 2, o
+      assert not c 'Even', '2', o
       assert not c 'Even', 1, o
 
     test 'overwrite current' ->
@@ -208,6 +209,15 @@ suite 'check' ->
 
       assert c 'Undefined', 'bananas', o
       assert not c 'Undefined', void, o
+
+    test 'type-of is optional' ->
+      o =
+        custom-types:
+          str:
+            validate: -> typeof it is 'string'
+
+      assert c 'str', 'foo', o
+      assert not c 'str', 1, o
 
   test 'nested' ->
     type = '{a: (String, [Number], {x: {a: Maybe Number}, y: Array, ...}), b: Error{message: String, ...}}'

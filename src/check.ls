@@ -56,7 +56,8 @@ function check input, type-obj
     return true if type is '*' # wildcard
     setting = custom-types[type] or types[type]
     if setting
-      setting.type-of is typeof! input and setting.validate input
+      (setting.type-of is void or setting.type-of is typeof! input)
+        and setting.validate input
     else
       # Booleam, String, Null, Undefined, Error, user defined objects, etc.
       type is typeof! input and (not structure or check-structure input, type-obj)
