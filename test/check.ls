@@ -70,6 +70,7 @@ suite 'check' ->
   test 'multiple' ->
     assert c 'Number | String', 'hi'
     assert not c 'Date | Number', 'hi'
+    assert c 'String | [String] | [Object]', [{}]
 
   suite 'Array' ->
     test 'bare' ->
@@ -235,6 +236,9 @@ suite 'check' ->
     type = '{a: (String, [Number], {x: {a: Maybe Number}, y: Array, ...}), b: Error{message: String, ...}}'
     assert c type, {a: ['hi', [1, 2, 3], {x: {a: 42}, y: [1, 'bye']}], b: new Error 'message'}
     assert c type, {a: ['moo', [3], {x: {}, y: [], z: 999}], b: new Error '23'}
+
+  test 'nexted with union' ->
+    assert c '[[Number] | [String]]', [[1, 2], ['foo', 'bar'], [3]]
 
   suite 'errors' ->
     test 'no type defined' ->

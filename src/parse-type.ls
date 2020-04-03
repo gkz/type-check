@@ -95,9 +95,9 @@ function consume-types tokens
       * type: 'Null'
     types-so-far = {+Undefined, +Null}
   for ever
-    {type}:type-obj = consume-type tokens
+    {type, structure}:type-obj = consume-type tokens
     types.push type-obj unless types-so-far[type]
-    types-so-far[type] = true
+    types-so-far[type] = true unless structure?
     break unless maybe-consume-op tokens, '|'
   types
 

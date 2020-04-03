@@ -108,6 +108,17 @@ suite 'parse type' ->
         ]
       ]
 
+    test 'nested with multiple' ->
+      deep-equal (p '[[Number] | [String]]'), [
+        structure: 'array'
+        of: [
+          * structure: 'array'
+            of: [type: 'Number']
+          * structure: 'array'
+            of: [type: 'String']
+        ]
+      ]
+
   suite 'array structure with type' ->
     test 'simple' ->
       deep-equal (p 'Int16Array[Int]'), [
