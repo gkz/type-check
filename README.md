@@ -2,7 +2,7 @@
 
 <a name="type-check" />
 
-`type-check` is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code. It is a major component of [levn](https://github.com/gkz/levn). MIT license. Version 0.3.1. Check out the [demo](http://gkz.github.io/type-check/).
+`type-check` is a library which allows you to check the types of JavaScript values at runtime with a Haskell like type syntax. It is great for checking external input, for testing, or even for adding a bit of safety to your internal code. It is a major component of [levn](https://github.com/gkz/levn). MIT license. Version 0.4.0. Check out the [demo](http://gkz.github.io/type-check/).
 
 For updates on `type-check`, [follow me on twitter](https://twitter.com/gkzahariev).
 
@@ -203,7 +203,7 @@ typeCheck('Even', 3, options); // false
 
 `customTypes` allows you to set up custom types for validation. The value of this is an object. The keys of the object are the types you will be matching. Each value of the object will be an object having a `typeOf` property - a string, and `validate` property - a function.
 
-The `typeOf` property is the type the value should be, and `validate` is a function which should return true if the value is of that type. `validate` receives one parameter, which is the value that we are checking.
+The `typeOf` property is the type the value should be (optional - if not set only `validate` will be used), and `validate` is a function which should return true if the value is of that type. `validate` receives one parameter, which is the value that we are checking.
 
 ## Technical About
 
