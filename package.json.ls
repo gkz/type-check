@@ -26,10 +26,9 @@ scripts:
   test: "make test"
 
 dependencies:
-  'prelude-ls': '~1.1.2'
+  'prelude-ls': '^1.2.1'
 
 dev-dependencies:
-  livescript: '~1.4.0'
-  mocha: '~2.3.4'
-  istanbul: '~0.4.1'
-  browserify: '~12.0.1'
+  livescript: '^1.6.0'
+  mocha: '^7.1.1'
+  browserify: '^16.5.1'

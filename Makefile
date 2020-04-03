@@ -7,8 +7,6 @@ LS = node_modules/livescript
 LSC = node_modules/.bin/lsc
 BROWSERIFY = node_modules/.bin/browserify
 MOCHA = node_modules/.bin/mocha
-MOCHA2 = node_modules/.bin/_mocha
-ISTANBUL = node_modules/.bin/istanbul
 
 package.json: package.json.ls
 	$(LSC) --compile package.json.ls
@@ -34,10 +32,7 @@ build: $(LIB) package.json
 build-browser: browser/type-check.js
 
 test: build
-	$(MOCHA) --reporter dot --ui tdd --compilers ls:$(LS)
-
-coverage: build
-	$(ISTANBUL) cover $(MOCHA2) -- --reporter dot --ui tdd --compilers ls:$(LS)
+	$(MOCHA) --ui tdd --require livescript "test/**/*.ls"
 
 dev-install: package.json
 	npm install .
