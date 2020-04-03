@@ -72,5 +72,5 @@ function check-multiple input, types, options
   any (-> check input, it, options), types
 
 module.exports = (parsed-type, input, options = {}) ->
-  options.custom-types = {} unless options.custom-types
+  options.custom-types = {} unless options.custom-types?
   check-multiple input, parsed-type, options
