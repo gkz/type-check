@@ -219,6 +219,18 @@ suite 'check' ->
       assert c 'str', 'foo', o
       assert not c 'str', 1, o
 
+    test 'nested check with custom types' ->
+      o =
+        custom-types:
+          A:
+            type-of: 'Object'
+            validate: -> c 'String', it.foo and it.foo = 'A'
+          B:
+            type-of: 'Object'
+            validate: -> c 'String', it.bar and it.bar = 'B'
+
+      assert c '{a: A, b: B}', {a: {foo: 'A'}, b: {bar: 'B'}}, o
+
   test 'nested' ->
     type = '{a: (String, [Number], {x: {a: Maybe Number}, y: Array, ...}), b: Error{message: String, ...}}'
     assert c type, {a: ['hi', [1, 2, 3], {x: {a: 42}, y: [1, 'bye']}], b: new Error 'message'}
